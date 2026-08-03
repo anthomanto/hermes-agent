@@ -13,6 +13,7 @@ services:
     env_file: [.env]
     environment:
       - TZ=Europe/Paris
+      - HOME=/opt/data          # le gateway tourne en hermes (home /opt/data) mais heritait HOME=/root (mode 700, illisible) : casse agent-browser, ~/.local/bin, ~/.xurl
     volumes:
       - /opt/hermes-data:/opt/data   # données persistantes : token OAuth, sessions, config, logs
     # PAS de `ports:` — rien d'exposé (le firewall bloque de toute façon tout sauf SSH).
