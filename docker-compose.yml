@@ -6,7 +6,10 @@
 #   One-shot         : docker exec hermes-agent hermes -z "..."
 services:
   hermes:
-    build: .
+    build:
+      context: .
+      args:
+        HERMES_BOT_DESKTOP: "1"   # Bot Screen (Xfce + TigerVNC) pour computer_use / cua-driver
     image: hermes-agent:local
     container_name: hermes-agent
     restart: unless-stopped
